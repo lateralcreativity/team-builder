@@ -1,41 +1,44 @@
 import React from 'react';
 
-export default function Form(props) {
-    const { submitHandler, inputHandler, formValues } = props;
-
+export default function Form( props ) {
+    const { values, onInputChange, onSubmit } = props;
     return (
-        <form onSubmit={submitHandler}>
+        <form onSubmit={ onSubmit }>
             <div>
-                <h1>Members List</h1>
+                <h2>Add Member</h2>
                 <button>Submit</button>
             </div>
 
-            <label>Name:&nbsp;
-                <input type="text"
-                        placeholder="Enter a name."
-                        name="name"
-                        values={formValues.name}
-                        onChange={inputHandler}
-                />
-            </label>
+            <div>
+                <h4>Member Information</h4>
 
-            <label>Email:&nbsp;
-                <input type="text"
-                        placeholder="Enter an email."
-                        name="email"
-                        values={formValues.email}
-                        onChange={inputHandler}
-                />
-            </label>
+                <label>Name:&nbsp;
+                    <input type="text"
+                    placeholder="Name"
+                    name="name"
+                    value= { values.name }
+                    onChange= { onInputChange } 
+                    />
+                </label>
 
-            <label>Role:&nbsp;
-                <select name="role" values={formValues.role} onInput={inputHandler}>
+                <label>Email:&nbsp;
+                    <input type="text"
+                    placeholder="example@email.com"
+                    name="email"
+                    value= { values.email }
+                    onChange= { onInputChange } 
+                    />
+                </label>
+
+                <label>Role:&nbsp;
+                    <select name='role' value={ values.role } onChange={ onInputChange }>
                         <option value="">Select a role</option>
-                        <option value="Front-End" name="Front-End">Front End Engineer</option>
-                        <option value="Back-End" name="Back-End">Back End Engineer</option>
-                        <option value="Designer" name="Designer">Designer</option>
-                </select>
-            </label>
+                        <option value="Front-End">Front End Engineer</option>
+                        <option value="Back-End">Back End Engineer</option>
+                        <option value="Designer">Designer</option>
+                    </select>
+                </label>
+            </div>
         </form>
     )
 }
